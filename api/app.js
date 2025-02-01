@@ -7,7 +7,8 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 import indexRouter from './routes/index.js';
-import uploadRouter from './routes/upload.js';
+import uploadRouter from './routes/uploadRouter.js';
+import userRouter from './routes/userRouter.js';
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(cookieParser());
 
 app.use('/api', indexRouter);
 app.use('/api', uploadRouter);
+app.use('/auth', userRouter);
 
 // static files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
