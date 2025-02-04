@@ -9,8 +9,10 @@ import { fileURLToPath } from 'url';
 import indexRouter from './routes/index.js';
 import uploadRouter from './routes/uploadRouter.js';
 import userRouter from './routes/userRouter.js';
+import dotenv from 'dotenv';
 
 const app = express();
+dotenv.config();
 
 // Define __dirname for ES module
 const __filename = fileURLToPath(import.meta.url);
