@@ -27,11 +27,11 @@ model User {
   posts Post[]
   likes Like[]
   comments Comment[]
-  followers Follows[] @relation("following")
-  following Follows[] @relation("follower")
+  following Follow[] @relation("following")
+  followers Follow[] @relation("follower")
 }
 
-model Follows {
+model Follow {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
   follower User @relation("follower", fields: [followerId], references: [id])
