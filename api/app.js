@@ -15,6 +15,7 @@ const app = express();
 // Define __dirname for ES module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+export const uploadsFolder = path.join(__dirname, 'uploads');
 
 // view engine setup
 app.set('view engine', 'jade');
@@ -30,7 +31,7 @@ app.use('/api', uploadRouter);
 app.use('/auth', userRouter);
 
 // static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(uploadsFolder));
 
 if (!fs.existsSync('./uploads')) {
   fs.mkdirSync('./uploads');

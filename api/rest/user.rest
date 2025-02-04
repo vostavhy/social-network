@@ -1,0 +1,30 @@
+GET http://localhost:3000/api HTTP/1.1
+
+###
+
+GET http://localhost:3000/auth/user/adfjls HTTP/1.1
+
+###
+
+POST http://localhost:3000/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "saplme@email.com",
+    "password": "password-superT"
+}
+
+###
+
+POST http://localhost:3000/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Test",
+    "password": "12341234",
+    "email": "test@email.com"
+}
+
+###
+
+GET http://localhost:3000/auth/current HTTP/1.1
