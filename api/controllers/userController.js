@@ -4,6 +4,7 @@ import * as jdenticon from 'jdenticon';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import { uploadsFolder } from '../app.js';
+import { createUser, getUserByEmail, getUserById, updateUser } from '../models/userModel.js';
 
 class UserController {
   async register(req, res) {
@@ -17,11 +18,7 @@ class UserController {
       // check if user exists
       // if user exists, return 400
       // if user does not exist, create user
-      const existingUser = await prisma.user.findUnique({
-        where: {
-          email,
-        },
-      });
+      const existingUser = await getUserByEmail(email);
 
       if (existingUser) {
         return res.status(400).send({ error: 'User already exists' });
@@ -37,13 +34,11 @@ class UserController {
       const avatarPath = `${uploadsFolder}/${avatarName}`;
       await fs.promises.writeFile(avatarPath, png);
 
-      const newUser = await prisma.user.create({
-        data: {
-          email,
-          password: hashedPassword,
-          name,
-          avatarUrl: `/uploads/${avatarName}`,
-        },
+      const newUser = await createUser({
+        email,
+        password: hashedPassword,
+        name,
+        avatarUrl: `/uploads/${avatarName}`,
       });
 
       res.send(newUser);
@@ -61,11 +56,7 @@ class UserController {
     }
 
     try {
-      const user = await prisma.user.findUnique({
-        where: {
-          email,
-        },
-      });
+      const user = await getUserByEmail(email);
 
       if (!user) {
         return res.status(400).send({ error: 'Invalid email or password' });
@@ -77,7 +68,7 @@ class UserController {
       }
 
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-        expiresIn: '1h',
+        expiresIn: '24h',
       });
 
       res.send({ token });
@@ -92,18 +83,13 @@ class UserController {
     const userId = req.user.userId;
 
     try {
-      const user = await prisma.user.findUnique({
-        where: { id },
-        include: {
-          followers: true,
-          following: true,
-        },
-      });
+      const user = await getUserById(id);
 
       if (!user) {
         return res.status(404).send({ error: 'User not found' });
       }
 
+      // check if the current user is following the user
       const isFollowing = user.followers.some((follower) => follower.id === userId);
 
       // password must not be send to the client
@@ -119,6 +105,9 @@ class UserController {
     const { id } = req.params;
     const { email, name, dateOfBirth, bio, location } = req.body;
 
+    //console.log(req.user.userId);
+    //console.log(id);
+
     if (id !== req.user.userId) {
       return res.status(403).send({ error: 'Forbidden' });
     }
@@ -132,11 +121,7 @@ class UserController {
 
     try {
       if (email) {
-        const existingUser = await prisma.user.findUnique({
-          where: {
-            email,
-          },
-        });
+        const existingUser = await getUserByEmail(email);
 
         if (existingUser && existingUser.id !== id) {
           return res.status(400).send({ error: 'Email already in use' });
@@ -148,16 +133,13 @@ class UserController {
     }
 
     try {
-      const updatedUser = await prisma.user.update({
-        where: { id },
-        data: {
-          email: email || undefined,
-          name: name || undefined,
-          dateOfBirth: dateOfBirth || undefined,
-          bio: bio || undefined,
-          location: location || undefined,
-          avatarUrl: avatarUrl || undefined,
-        },
+      const updatedUser = await updateUser(id, {
+        email,
+        name,
+        dateOfBirth,
+        bio,
+        location,
+        avatarUrl,
       });
       res.send(updatedUser);
     } catch (error) {
@@ -169,23 +151,7 @@ class UserController {
   async current(req, res) {
     const { user } = req;
     try {
-      const currentUser = await prisma.user.findUnique({
-        where: {
-          id: user.userId,
-        },
-        include: {
-          followers: {
-            include: {
-              follower: true,
-            },
-          },
-          following: {
-            include: {
-              following: true,
-            },
-          },
-        },
-      });
+      const currentUser = await getUserById(user.userId);
 
       if (!currentUser) {
         return res.status(404).send({ error: 'User not found' });

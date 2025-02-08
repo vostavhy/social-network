@@ -10,7 +10,17 @@ POST http://localhost:3000/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "test@email.com",
+    "email": "newmail@test.ru",
+    "password": "12341234"
+}
+
+###
+
+POST http://localhost:3000/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test2@email.com",
     "password": "12341234"
 }
 
@@ -22,25 +32,25 @@ content-type: application/json
 {
     "name": "Test",
     "password": "12341234",
-    "email": "test@email.com"
+    "email": "test2@email.com"
 }
 
 ###
 
 GET http://localhost:3000/auth/current HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyNGZiYWQyMDEwYzllODczMGI2NTQiLCJpYXQiOjE3Mzg3MDUwMDUsImV4cCI6MTczODcwODYwNX0.g6NJRjFuTMlDwELFFTwLgB85QVAjg7N38qC2aYukCak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyOGVjMmZjYjJmNDVmMjM3ZmY2YzYiLCJpYXQiOjE3MzkwNDE3MTMsImV4cCI6MTczOTEyODExM30.twJ8QRjYkgtuuYxGjeWJpy48QR8DNPOQjrUK82IMTz4
 
 ###
 GET http://localhost:3000/auth/user/67a24fbad2010c9e8730b654 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyNGZiYWQyMDEwYzllODczMGI2NTQiLCJpYXQiOjE3Mzg3MDUwMDUsImV4cCI6MTczODcwODYwNX0.g6NJRjFuTMlDwELFFTwLgB85QVAjg7N38qC2aYukCak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyOGVjMmZjYjJmNDVmMjM3ZmY2YzYiLCJpYXQiOjE3MzkwNDE3MTMsImV4cCI6MTczOTEyODExM30.twJ8QRjYkgtuuYxGjeWJpy48QR8DNPOQjrUK82IMTz4
 
 ###
-PUT http://localhost:3000/auth/update/67a24fbad2010c9e8730b654 HTTP/1.1
+PUT http://localhost:3000/auth/update/67a28ec2fcb2f45f237ff6c6 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyNGZiYWQyMDEwYzllODczMGI2NTQiLCJpYXQiOjE3Mzg3MDUwMDUsImV4cCI6MTczODcwODYwNX0.g6NJRjFuTMlDwELFFTwLgB85QVAjg7N38qC2aYukCak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyOGVjMmZjYjJmNDVmMjM3ZmY2YzYiLCJpYXQiOjE3MzkwNDE3MTMsImV4cCI6MTczOTEyODExM30.twJ8QRjYkgtuuYxGjeWJpy48QR8DNPOQjrUK82IMTz4
 
 {
-    "email": "new-email@test.ru"
+    "email": "newmail@test.ru"
 }
