@@ -1,12 +1,14 @@
-import prisma from '../prisma/client.js';
 import bcrypt from 'bcryptjs';
 import * as jdenticon from 'jdenticon';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import { uploadsFolder } from '../app.js';
-import { createUser, getUserByEmail, getUserById, updateUser } from '../models/userModel.js';
 
-class UserController {
+export default class UserController {
+  constructor(userService) {
+    this.userService = userService;
+  }
+
   async register(req, res) {
     const { email, password, name } = req.body;
 
@@ -18,7 +20,7 @@ class UserController {
       // check if user exists
       // if user exists, return 400
       // if user does not exist, create user
-      const existingUser = await getUserByEmail(email);
+      const existingUser = await this.userService.getUserByEmail(email);
 
       if (existingUser) {
         return res.status(400).send({ error: 'User already exists' });
@@ -34,7 +36,7 @@ class UserController {
       const avatarPath = `${uploadsFolder}/${avatarName}`;
       await fs.promises.writeFile(avatarPath, png);
 
-      const newUser = await createUser({
+      const newUser = await this.userService.createUser({
         email,
         password: hashedPassword,
         name,
@@ -56,7 +58,7 @@ class UserController {
     }
 
     try {
-      const user = await getUserByEmail(email);
+      const user = await this.userService.getUserByEmail(email);
 
       if (!user) {
         return res.status(400).send({ error: 'Invalid email or password' });
@@ -83,7 +85,7 @@ class UserController {
     const userId = req.user.userId;
 
     try {
-      const user = await getUserById(id);
+      const user = await this.userService.getUserById(id);
 
       if (!user) {
         return res.status(404).send({ error: 'User not found' });
@@ -121,7 +123,7 @@ class UserController {
 
     try {
       if (email) {
-        const existingUser = await getUserByEmail(email);
+        const existingUser = await this.userService.getUserByEmail(email);
 
         if (existingUser && existingUser.id !== id) {
           return res.status(400).send({ error: 'Email already in use' });
@@ -133,7 +135,7 @@ class UserController {
     }
 
     try {
-      const updatedUser = await updateUser(id, {
+      const updatedUser = await this.userService.updateUser(id, {
         email,
         name,
         dateOfBirth,
@@ -151,7 +153,7 @@ class UserController {
   async current(req, res) {
     const { user } = req;
     try {
-      const currentUser = await getUserById(user.userId);
+      const currentUser = await this.userService.getUserById(user.userId);
 
       if (!currentUser) {
         return res.status(404).send({ error: 'User not found' });
@@ -168,5 +170,3 @@ class UserController {
     res.send('delete');
   }
 }
-
-export default UserController;

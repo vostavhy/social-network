@@ -5,11 +5,11 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
 import indexRouter from './routes/index.js';
 import uploadRouter from './routes/uploadRouter.js';
 import userRouter from './routes/userRouter.js';
-import dotenv from 'dotenv';
 
 const app = express();
 dotenv.config();
