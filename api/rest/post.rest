@@ -1,0 +1,23 @@
+
+POST http://localhost:3000/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "test2@email.com",
+    "password": "12341234"
+}
+
+###
+
+GET http://localhost:3000/api/posts HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/posts/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E3YTc5OTY2NDFkZmU5OTk1OWMwZTMiLCJpYXQiOjE3MzkwOTQ5NDcsImV4cCI6MTczOTE4MTM0N30.py8Zr5uZU_mNjnMKJzRKlEfED1viO2yc6tX_WIEjIbM
+
+{
+    "email": "newmail@test.ru",
+    "password": "12341234"
+}

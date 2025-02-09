@@ -10,6 +10,7 @@ import dotenv from 'dotenv';
 import indexRouter from './routes/index.js';
 import uploadRouter from './routes/uploadRouter.js';
 import userRouter from './routes/userRouter.js';
+import postRouter from './routes/postRouter.js';
 
 const app = express();
 dotenv.config();
@@ -30,6 +31,7 @@ app.use(cookieParser());
 
 app.use('/api', indexRouter);
 app.use('/api', uploadRouter);
+app.use('/api/posts', postRouter);
 app.use('/auth', userRouter);
 
 // static files
