@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import * as jdenticon from 'jdenticon';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
-import { uploadsFolder } from '../app.js';
+import { uploadDestination } from '../routes/uploadRouter.js';
 
 export default class UserController {
   constructor(userService) {
@@ -32,15 +32,15 @@ export default class UserController {
 
       // generate avatar
       const png = jdenticon.toPng(email, 200);
-      const avatarName = `${email}.png`;
-      const avatarPath = `${uploadsFolder}/${avatarName}`;
+      const avatarName = `${email}-${Date.now().toString()}.png`;
+      const avatarPath = `${uploadDestination}${avatarName}`;
       await fs.promises.writeFile(avatarPath, png);
 
       const newUser = await this.userService.createUser({
         email,
         password: hashedPassword,
         name,
-        avatarUrl: `/uploads/${avatarName}`,
+        avatarUrl: `/${avatarPath}`,
       });
 
       res.send(newUser);

@@ -2,7 +2,7 @@ import multer from 'multer';
 import { Router } from 'express';
 
 const router = Router();
-const uploadDestination = 'uploads/';
+export const uploadDestination = 'uploads/';
 
 // Set storage engine
 const storage = multer.diskStorage({
@@ -18,7 +18,7 @@ const upload = multer({
   limits: { fileSize: 1000000 },
 }).single('myImage');
 
-router.post('/upload', (req, res) => {
+router.post('/', (req, res) => {
   upload(req, res, (err) => {
     if (err) {
       res.send('error');

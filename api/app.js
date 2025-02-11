@@ -30,7 +30,7 @@ app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/api', indexRouter);
-app.use('/api', uploadRouter);
+app.use('/api/upload', uploadRouter);
 app.use('/api/posts', postRouter);
 app.use('/auth', userRouter);
 

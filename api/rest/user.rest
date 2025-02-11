@@ -6,6 +6,17 @@ GET http://localhost:3000/auth/user/adfjls HTTP/1.1
 
 ###
 
+POST http://localhost:3000/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Test3",
+    "password": "123",
+    "email": "test3@email.com"
+}
+
+###
+
 POST http://localhost:3000/auth/login HTTP/1.1
 content-type: application/json
 
@@ -22,17 +33,6 @@ content-type: application/json
 {
     "email": "test2@email.com",
     "password": "12341234"
-}
-
-###
-
-POST http://localhost:3000/auth/register HTTP/1.1
-content-type: application/json
-
-{
-    "name": "Test",
-    "password": "12341234",
-    "email": "test2@email.com"
 }
 
 ###
