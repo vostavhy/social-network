@@ -1,23 +1,34 @@
-
-POST http://localhost:3000/auth/login HTTP/1.1
-content-type: application/json
-
-{
-    "email": "test2@email.com",
-    "password": "12341234"
-}
-
 ###
 
 GET http://localhost:3000/api/posts HTTP/1.1
 
 ###
 
+GET http://localhost:3000/api/posts/67abb5b59cd26da99aecc21f HTTP/1.1
+
+###
+
 POST http://localhost:3000/api/posts/create HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2E3YTc5OTY2NDFkZmU5OTk1OWMwZTMiLCJpYXQiOjE3MzkwOTQ5NDcsImV4cCI6MTczOTE4MTM0N30.py8Zr5uZU_mNjnMKJzRKlEfED1viO2yc6tX_WIEjIbM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
 
 {
-    "email": "newmail@test.ru",
-    "password": "12341234"
+    "content": "This is a third post"
 }
+
+###
+
+PATCH http://localhost:3000/api/posts/update/67abb5b59cd26da99aecc21f HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
+
+{
+    "content": "This is a third post edited"
+} 
+
+###
+
+DELETE http://localhost:3000/api/posts/delete/67abb5b59cd26da99aecc21f HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
+ 

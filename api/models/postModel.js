@@ -1,4 +1,17 @@
-import prisma from '../prisma/client.js';
+import { prisma } from '../prisma/client.js';
+
+export const getPosts = async () => {
+  return await prisma.post.findMany({
+    include: {
+      author: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
+  });
+};
 
 export const getPostById = async (id) => {
   return await prisma.post.findUnique({
@@ -6,15 +19,18 @@ export const getPostById = async (id) => {
       id,
     },
     include: {
-      user: true,
-    },
-  });
-};
-
-export const getPosts = async () => {
-  return await prisma.post.findMany({
-    include: {
-      user: true,
+      author: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+      likes: true,
+      comments: {
+        include: {
+          user: true,
+        },
+      },
     },
   });
 };
@@ -35,6 +51,18 @@ export const updatePost = async (id, data) => {
 };
 
 export const deletePost = async (id) => {
+  const likes = await prisma.like.deleteMany({
+    where: {
+      postId: id,
+    },
+  });
+
+  const comments = await prisma.comment.deleteMany({
+    where: {
+      postId: id,
+    },
+  });
+
   return await prisma.post.delete({
     where: {
       id,

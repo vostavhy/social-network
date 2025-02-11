@@ -21,8 +21,8 @@ POST http://localhost:3000/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "newmail@test.ru",
-    "password": "12341234"
+    "email": "test3@email.com",
+    "password": "123"
 }
 
 ###
@@ -39,17 +39,17 @@ content-type: application/json
 
 GET http://localhost:3000/auth/current HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyOGVjMmZjYjJmNDVmMjM3ZmY2YzYiLCJpYXQiOjE3MzkwNDE3MTMsImV4cCI6MTczOTEyODExM30.twJ8QRjYkgtuuYxGjeWJpy48QR8DNPOQjrUK82IMTz4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
 
 ###
 GET http://localhost:3000/auth/user/67a24fbad2010c9e8730b654 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyOGVjMmZjYjJmNDVmMjM3ZmY2YzYiLCJpYXQiOjE3MzkwNDE3MTMsImV4cCI6MTczOTEyODExM30.twJ8QRjYkgtuuYxGjeWJpy48QR8DNPOQjrUK82IMTz4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
 
 ###
 PUT http://localhost:3000/auth/update/67a28ec2fcb2f45f237ff6c6 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2EyOGVjMmZjYjJmNDVmMjM3ZmY2YzYiLCJpYXQiOjE3MzkwNDE3MTMsImV4cCI6MTczOTEyODExM30.twJ8QRjYkgtuuYxGjeWJpy48QR8DNPOQjrUK82IMTz4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
 
 {
     "email": "newmail@test.ru"
