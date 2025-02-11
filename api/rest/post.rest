@@ -4,7 +4,7 @@ GET http://localhost:3000/api/posts HTTP/1.1
 
 ###
 
-GET http://localhost:3000/api/posts/67abb5b59cd26da99aecc21f HTTP/1.1
+GET http://localhost:3000/api/posts/67abb92c629bfa5565edbe7d HTTP/1.1
 
 ###
 
@@ -18,7 +18,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiY
 
 ###
 
-PATCH http://localhost:3000/api/posts/update/67abb5b59cd26da99aecc21f HTTP/1.1
+PATCH http://localhost:3000/api/posts/67abb92c629bfa5565edbe7d HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
 
@@ -28,7 +28,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiY
 
 ###
 
-DELETE http://localhost:3000/api/posts/delete/67abb5b59cd26da99aecc21f HTTP/1.1
+DELETE http://localhost:3000/api/posts/67abb92c629bfa5565edbe7d HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
  

@@ -1,0 +1,23 @@
+###
+
+GET http://localhost:3000/api/comments HTTP/1.1
+
+
+###
+
+POST http://localhost:3000/api/comments/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
+
+{
+    "postId": "67abb92c629bfa5565edbe7d",
+    "content": "This is a second comment"
+}
+
+
+###
+
+DELETE http://localhost:3000/api/comments/67abc4d07eaea5eec68bbe7a HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
+ 

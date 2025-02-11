@@ -11,6 +11,7 @@ import indexRouter from './routes/index.js';
 import uploadRouter from './routes/uploadRouter.js';
 import userRouter from './routes/userRouter.js';
 import postRouter from './routes/postRouter.js';
+import commentRouter from './routes/commentRouter.js';
 
 const app = express();
 dotenv.config();
@@ -29,10 +30,11 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use('/auth', userRouter);
 app.use('/api', indexRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/posts', postRouter);
-app.use('/auth', userRouter);
+app.use('/api/comments', commentRouter);
 
 // static files
 app.use('/uploads', express.static(uploadsFolder));
