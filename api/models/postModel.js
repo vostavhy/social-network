@@ -9,6 +9,8 @@ export const getPosts = async () => {
           name: true,
         },
       },
+      comments: true,
+      likes: true,
     },
   });
 };
