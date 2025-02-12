@@ -13,6 +13,7 @@ import userRouter from './routes/userRouter.js';
 import postRouter from './routes/postRouter.js';
 import commentRouter from './routes/commentRouter.js';
 import likeRouter from './routes/likeRouter.js';
+import followerRouter from './routes/followerRouter.js';
 
 const app = express();
 dotenv.config();
@@ -37,6 +38,7 @@ app.use('/api/upload', uploadRouter);
 app.use('/api/posts', postRouter);
 app.use('/api/comments', commentRouter);
 app.use('/api/likes', likeRouter);
+app.use('/api/followers', followerRouter);
 
 // static files
 app.use('/uploads', express.static(uploadsFolder));
