@@ -8,25 +8,25 @@ export default class FollowerController {
     const { followingId } = req.body;
 
     if (!followingId) {
-      return res.status(400).send('Following ID is required');
+      return res.status(400).json({ error: 'Following ID is required' });
     }
 
     // you cannot follow yourself
     if (userId === followingId) {
-      return res.status(400).send('You cannot follow yourself');
+      return res.status(400).json({ error: 'You cannot follow yourself' });
     }
 
     // check if the user is already following
     const isFollowing = await this.followerService.isFollowing(userId, followingId);
     if (isFollowing) {
-      return res.status(400).send('You are already following this user');
+      return res.status(400).json({ error: 'You are already following this user' });
     }
 
     try {
       await this.followerService.follow(userId, followingId);
-      res.status(200).send('Followed');
+      res.status(200).json({ message: 'Followed' });
     } catch (error) {
-      res.status(400).send(error.message);
+      res.status(400).json({ error: error.message });
     }
   }
 
@@ -35,20 +35,20 @@ export default class FollowerController {
     const { followingId } = req.body;
 
     if (!followingId) {
-      return res.status(400).send('Following ID is required');
+      return res.status(400).json({ error: 'Following ID is required' });
     }
 
     // check if the user is not following
     const isFollowing = await this.followerService.isFollowing(userId, followingId);
     if (!isFollowing) {
-      return res.status(400).send('You are not following this user');
+      return res.status(400).json({ error: 'You are not following this user' });
     }
 
     try {
       await this.followerService.unfollow(userId, followingId);
-      res.status(200).send('Unfollowed');
+      res.status(200).json({ error: 'Unfollowed' });
     } catch (error) {
-      res.status(400).send(error.message);
+      res.status(400).json({ error: error.message });
     }
   }
 }
