@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  express-api:
+    container_name: express-api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    command: ['node', 'bin/www']
+    depends_on:
+      - mongo
+  mongo:
+    # This image automatically creates a replica set required for transactions
+    image: prismagraphql/mongo-single-replica:5.0.3
+    env_file:
+      - .env
+    ports:
+      - 27017:27017
