@@ -1,12 +1,12 @@
 const App = () => {
   return (
     <div className="App">
-      <header className="">
+      <header>
         <h1 className="text-6xl">React App</h1>
-        <button className="btn btn-primary rounded-2xl">Click on me</button>
+        <button className="btn btn-primary rounded-full">Click on me</button>
       </header>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
