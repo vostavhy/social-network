@@ -3,16 +3,6 @@ export default class CommentController {
     this.commentService = commentService;
   }
 
-  async getComments(req, res) {
-    try {
-      const comments = await this.commentService.getComments();
-      return res.json(comments);
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: 'Internal server error' });
-    }
-  }
-
   async getCommentById(req, res) {
     const { id } = req.params;
 

@@ -35,6 +35,11 @@ export default class PostController {
       return res.status(401).json({ error: 'Unauthorized' });
     }
 
+    const isAuthorExists = await this.postService.isAuthorExists(user.userId);
+    if (!isAuthorExists) {
+      return res.status(403).json({ error: 'Author not found' });
+    }
+
     const { content } = req.body;
     if (!content) {
       return res.status(400).json({ error: 'Content are required' });

@@ -4,23 +4,23 @@ GET http://localhost:3000/api/posts HTTP/1.1
 
 ###
 
-GET http://localhost:3000/api/posts/67abb92c629bfa5565edbe7d HTTP/1.1
+GET http://localhost:3000/api/posts/67b24851cf017847c38473c1 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/api/posts/create HTTP/1.1
+POST http://localhost:3000/api/posts HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IyNDIxYjQwMzEwMDQ1ZDM0YjA1NzEiLCJpYXQiOjE3Mzk3MzU1ODMsImV4cCI6MTczOTgyMTk4M30.hIBqccGNsWLBIHruf6W_1k-H-PPfwBTdRuA-05Pw3fQ
 
 {
-    "content": "This is a third post"
+    "content": "This is a second post"
 }
 
 ###
 
 PATCH http://localhost:3000/api/posts/67abb92c629bfa5565edbe7d HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IyNDAxYmM4ODQ2MjA4YjBkZTg2MWYiLCJpYXQiOjE3Mzk3MzUwODIsImV4cCI6MTczOTgyMTQ4Mn0.22o_m1gnWKB6wkVCKIszfMP7KeaVj0qKOjgUFIDHP6I
 
 {
     "content": "This is a third post edited"
@@ -30,5 +30,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiY
 
 DELETE http://localhost:3000/api/posts/67abb92c629bfa5565edbe7d HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IyNDAxYmM4ODQ2MjA4YjBkZTg2MWYiLCJpYXQiOjE3Mzk3MzUwODIsImV4cCI6MTczOTgyMTQ4Mn0.22o_m1gnWKB6wkVCKIszfMP7KeaVj0qKOjgUFIDHP6I
  

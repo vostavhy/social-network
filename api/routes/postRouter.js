@@ -7,9 +7,9 @@ const router = Router();
 
 const postController = new PostController(postService);
 
+router.post('/', auth, postController.createPost.bind(postController));
 router.get('/', postController.getPosts.bind(postController));
 router.get('/:id', postController.getPostById.bind(postController));
-router.post('/create', auth, postController.createPost.bind(postController));
 router.patch('/:id', auth, postController.updatePost.bind(postController));
 router.delete('/:id', auth, postController.deletePost.bind(postController));
 

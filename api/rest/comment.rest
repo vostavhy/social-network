@@ -5,12 +5,12 @@ GET http://localhost:3000/api/comments HTTP/1.1
 
 ###
 
-POST http://localhost:3000/api/comments/create HTTP/1.1
+POST http://localhost:3000/api/comments HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2FiYTk5ZWJhNDcyYzMzOTkzZjU5ZjYiLCJpYXQiOjE3MzkzMDM1MzcsImV4cCI6MTczOTM4OTkzN30.kgUVlCbh0dspietXfd9E3_-hfybPpUqz1wuSNyPYSQQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IyNDIxYjQwMzEwMDQ1ZDM0YjA1NzEiLCJpYXQiOjE3Mzk3MzU1ODMsImV4cCI6MTczOTgyMTk4M30.hIBqccGNsWLBIHruf6W_1k-H-PPfwBTdRuA-05Pw3fQ
 
 {
-    "postId": "67abb92c629bfa5565edbe7d",
+    "postId": "67b2425040310045d34b0572",
     "content": "This is a second comment"
 }
 

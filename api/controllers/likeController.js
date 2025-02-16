@@ -22,7 +22,7 @@ export default class LikeController {
   }
 
   async unlike(req, res) {
-    const { postId } = req.body;
+    const { postId } = req.params;
     const userId = req.user.id;
 
     // user can unlike post only if hi liked it

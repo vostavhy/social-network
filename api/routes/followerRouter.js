@@ -7,7 +7,7 @@ const router = Router();
 
 const followerController = new FollowerController(followerService);
 
-router.post('/follow', auth, followerController.follow.bind(followerController));
-router.post('/unfollow', auth, followerController.unfollow.bind(followerController));
+router.post('/', auth, followerController.follow.bind(followerController));
+router.delete('/:followingId', auth, followerController.unfollow.bind(followerController));
 
 export default router;

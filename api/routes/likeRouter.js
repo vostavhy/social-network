@@ -7,7 +7,7 @@ const router = Router();
 
 const likeController = new LikeController(likeService);
 
-router.post('/like', auth, likeController.like.bind(likeController));
-router.post('/unlike', auth, likeController.unlike.bind(likeController));
+router.post('/', auth, likeController.like.bind(likeController));
+router.delete('/:postId', auth, likeController.unlike.bind(likeController));
 
 export default router;

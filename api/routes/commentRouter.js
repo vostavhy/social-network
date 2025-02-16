@@ -7,8 +7,7 @@ const router = Router();
 
 const commentController = new CommentController(commentService);
 
-router.get('/', commentController.getComments.bind(commentController));
-router.post('/create', auth, commentController.createComment.bind(commentController));
+router.post('/', auth, commentController.createComment.bind(commentController));
 router.delete('/:id', auth, commentController.deleteComment.bind(commentController));
 
 export default router;

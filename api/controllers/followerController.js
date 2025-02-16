@@ -32,7 +32,7 @@ export default class FollowerController {
 
   async unfollow(req, res) {
     const { userId } = req.user;
-    const { followingId } = req.body;
+    const { followingId } = req.params;
 
     if (!followingId) {
       return res.status(400).json({ error: 'Following ID is required' });

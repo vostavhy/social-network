@@ -10,8 +10,8 @@ const userController = new UserController(userService);
 router.post('/register', userController.register.bind(userController));
 router.post('/login', userController.login.bind(userController));
 router.get('/current', auth, userController.current.bind(userController));
-router.put('/update/:id', auth, userController.updateUser.bind(userController));
-router.get('/user/:id', auth, userController.getUserById.bind(userController));
+router.put('/users/:id', auth, userController.updateUser.bind(userController));
+router.get('/users/:id', auth, userController.getUserById.bind(userController));
 router.delete('/delete', auth, userController.delete.bind(userController));
 
 export default router;

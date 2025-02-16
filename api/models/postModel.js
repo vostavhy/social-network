@@ -71,3 +71,11 @@ export const deletePost = async (id) => {
     },
   });
 };
+
+export const isAuthorExists = async (id) => {
+  return await prisma.user.findUnique({
+    where: {
+      id,
+    },
+  });
+};
