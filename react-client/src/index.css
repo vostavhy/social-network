@@ -4,3 +4,9 @@
     light --default,
     dark --prefersdark;
 }
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+main {
+  @apply min-h-screen;
+}
