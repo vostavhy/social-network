@@ -1,14 +1,15 @@
-function once(fn) {
-  let i = 0;
-  return function (...args) {
-    i++;
-    if (i > 1) return;
+// write the function isAnagram
+var isAnagram = function (test, original) {
+  if (test.length !== original.length) return false;
 
-    const result = fn.apply(this, args);
-    return result;
-  };
-}
+  test = test.toLowerCase().split('').sort();
+  original = original.toLowerCase().split('').sort();
 
-logOnce = once(console.log);
-logOnce('foo'); // -> "foo"
-logOnce('bar'); // -> no effect
+  for (let i = 0; i < test.length; i++) {
+    if (test[i] !== original[i]) return false;
+  }
+
+  return true;
+};
+
+console.log(isAnagram('foefet', 'toffee')); // true

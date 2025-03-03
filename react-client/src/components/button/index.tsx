@@ -18,10 +18,7 @@ export const Button = ({
   color = 'default',
 }: ButtonProps) => {
   return (
-    <button
-      className={`btn btn-${color} btn-lg ${className} ${fullWidth ? 'btn-block' : ''}`}
-      type={type}
-    >
+    <button className={`btn btn-${color} ${className} ${fullWidth ? 'btn-block' : ''}`} type={type}>
       {icon}
       {children}
     </button>

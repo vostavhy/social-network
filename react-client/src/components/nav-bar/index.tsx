@@ -1,4 +1,4 @@
-import { NotepadText, NotepadTextIcon, UserCheckIcon, UsersIcon } from 'lucide-react';
+import { NotepadTextIcon, UserCheckIcon, UsersIcon } from 'lucide-react';
 import { NavButton } from '../nav-button';
 
 export const NavBar = () => {

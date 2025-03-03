@@ -9,8 +9,10 @@ type NavButtonProps = {
 
 export const NavButton = ({ children, icon, href }: NavButtonProps) => {
   return (
-    <Button className="btn-ghost flex justify-start text-xl" icon={icon}>
-      <Link to={href}>{children}</Link>
-    </Button>
+    <Link to={href}>
+      <Button className="btn-ghost btn-lg flex justify-start text-xl" icon={icon}>
+        {children}
+      </Button>
+    </Link>
   );
 };
