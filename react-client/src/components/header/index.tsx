@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ThemeContext } from '../theme';
-import { MoonIcon, SunIcon } from 'lucide-react';
+import { LogOutIcon, MoonIcon, SunIcon } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../button';
 import { useDispatch } from 'react-redux';
@@ -24,13 +24,15 @@ export const Header = () => {
           Social network
         </Link>
       </div>
-      <div className="">
-        <Button onClick={handleLogout}>Logout</Button>
-      </div>
       <div className="flex-none">
         <button onClick={toggleTheme} className="btn btn-circle">
           {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
         </button>
+      </div>
+      <div>
+        <Button icon={<LogOutIcon />} onClick={handleLogout}>
+          Logout
+        </Button>
       </div>
     </div>
   );
