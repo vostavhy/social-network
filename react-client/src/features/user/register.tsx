@@ -1,15 +1,15 @@
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCurrentQuery, useLazyCurrentQuery, useLoginMutation } from '../app/services/userApi';
-import { Button } from '../components/button';
-import { Input } from '../components/input';
-import { useState } from 'react';
-import { ErrorMSG } from '../components/error-msg/errorMsg';
+import { useLazyCurrentQuery, useRegisterMutation } from '../../app/services/userApi';
+import { Button } from '../../components/button';
+import { Input } from '../../components/input';
+import { ErrorMSG } from '../../components/error-msg/errorMsg';
 
-export const Login = () => {
+export const Register = () => {
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [register, { isLoading }] = useRegisterMutation();
   const [triggerCurrentQuery] = useLazyCurrentQuery();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -20,14 +20,15 @@ export const Login = () => {
     const data = {
       email: formData.get('email') as string,
       password: formData.get('password') as string,
+      name: formData.get('name') as string,
     };
     console.log(data);
 
     try {
-      const response = await login(data).unwrap();
+      const response = await register(data).unwrap();
       console.log('Response:', response);
     } catch (error: any) {
-      console.log('Error occurred:', error.data.error);
+      console.log('Error occurred:', error);
 
       if (error.data.error) {
         setErrorMsg(error.data.error);
@@ -35,6 +36,7 @@ export const Login = () => {
         setErrorMsg('An unknown error occurred');
       }
 
+      console.log('type of ErrorMSG:', typeof errorMsg);
       console.log('ErrorMSG:', errorMsg);
     }
   };
@@ -43,9 +45,10 @@ export const Login = () => {
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <Input name="email" placeholder="Email" type="email" required />
       <Input name="password" placeholder="Password" type="password" required />
-      {errorMsg && <ErrorMSG errorMsg={errorMsg} />}
+      <Input name="name" placeholder="Name" type="text" />
+      <ErrorMSG errorMsg={errorMsg} />
       <Button type="submit" isLoading={isLoading}>
-        Login
+        Register
       </Button>
     </form>
   );

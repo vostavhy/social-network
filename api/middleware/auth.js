@@ -5,13 +5,13 @@ const auth = async (req, res, next) => {
   const token = authorization && authorization.toLowerCase().startsWith('bearer ') ? authorization.substring(7) : null;
 
   if (!token) {
-    return res.status(401).send('Unauthorized');
+    return res.status(401).json({ error: 'Unauthorized' });
   }
 
   try {
     jwt.verify(token, process.env.JWT_SECRET, (error, user) => {
       if (error) {
-        return res.status(403).send({ error: 'Invalid token' });
+        return res.status(403).json({ error: 'Invalid token' });
       }
 
       req.user = user;
@@ -19,7 +19,7 @@ const auth = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 

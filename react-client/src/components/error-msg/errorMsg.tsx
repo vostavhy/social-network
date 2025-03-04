@@ -1,9 +1,7 @@
-import React from 'react';
-
 type Props = {
-  errorMsg: string;
+  errorMsg: string | null;
 };
 
 export const ErrorMSG = ({ errorMsg }: Props) => {
-  return <p className="text-sm text-red-500">{errorMsg}</p>;
+  return errorMsg && <p className="text-sm text-red-500">{errorMsg}</p>;
 };

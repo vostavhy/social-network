@@ -1,5 +1,5 @@
-import { Login } from '../../features/login';
-import { Register } from '../../features/register';
+import { Login } from '../../features/user/login';
+import { Register } from '../../features/user/register';
 
 export const Auth = () => {
   return (
