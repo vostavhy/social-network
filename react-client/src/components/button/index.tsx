@@ -7,6 +7,7 @@ type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
   color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'info' | 'error';
+  isLoading?: boolean;
 };
 
 export const Button = ({
@@ -16,9 +17,13 @@ export const Button = ({
   type = 'button',
   fullWidth,
   color = 'default',
+  isLoading,
 }: ButtonProps) => {
   return (
-    <button className={`btn btn-${color} ${className} ${fullWidth ? 'btn-block' : ''}`} type={type}>
+    <button
+      className={`btn btn-${color} ${className} ${fullWidth ? 'btn-block' : ''} ${isLoading ? 'btn-disabled' : ''}`}
+      type={type}
+    >
       {icon}
       {children}
     </button>

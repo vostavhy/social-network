@@ -43,6 +43,7 @@ export const {
   useLoginMutation,
   useRegisterMutation,
   useCurrentQuery,
+  useLazyCurrentQuery,
   useGetUserByIdQuery,
   useUpdateUserMutation,
 } = userApi;

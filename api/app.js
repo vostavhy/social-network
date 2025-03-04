@@ -14,6 +14,7 @@ import postRouter from './routes/postRouter.js';
 import commentRouter from './routes/commentRouter.js';
 import likeRouter from './routes/likeRouter.js';
 import followerRouter from './routes/followerRouter.js';
+import cors from 'cors';
 
 const app = express();
 dotenv.config();
@@ -27,6 +28,7 @@ export const uploadsFolder = path.join(__dirname, 'uploads');
 app.set('view engine', 'jade');
 
 // middleware
+app.use(cors());
 app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));

@@ -1,4 +1,5 @@
 import { Login } from '../../features/login';
+import { Register } from '../../features/register';
 
 export const Auth = () => {
   return (
@@ -7,12 +8,14 @@ export const Auth = () => {
       <div className="tabs tabs-box w-full max-w-[340px]">
         <input type="radio" name="my_tabs_6" className="tab" aria-label="Register" />
         <div className="tab-content bg-base-100 border-base-300 p-6">
-          <div className="h-[200px]">Register</div>
+          <div className="min-h-[200px]">
+            <Register />
+          </div>
         </div>
 
         <input type="radio" name="my_tabs_6" className="tab" aria-label="Login" defaultChecked />
         <div className="tab-content bg-base-100 border-base-300 p-6">
-          <div className="h-[200px]">
+          <div className="min-h-[200px]">
             <Login />
           </div>
         </div>
