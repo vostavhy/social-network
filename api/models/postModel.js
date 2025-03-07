@@ -7,6 +7,7 @@ export const getPosts = async () => {
         select: {
           id: true,
           name: true,
+          avatarUrl: true,
         },
       },
       comments: true,
@@ -25,6 +26,7 @@ export const getPostById = async (id) => {
         select: {
           id: true,
           name: true,
+          avatarUrl: true,
         },
       },
       likes: true,

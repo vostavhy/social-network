@@ -43,6 +43,7 @@ export const {
   useGetPostsQuery,
   useLazyGetPostsQuery,
   useGetPostByIdQuery,
+  useLazyGetPostByIdQuery,
   useUpdatePostMutation,
   useDeletePostMutation,
 } = postApi;
