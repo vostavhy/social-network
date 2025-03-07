@@ -25,8 +25,9 @@ export const Register = () => {
     console.log(data);
 
     try {
-      const response = await register(data).unwrap();
-      console.log('Response:', response);
+      await register(data).unwrap();
+      await triggerCurrentQuery().unwrap();
+      navigate('/');
     } catch (error: any) {
       console.log('Error occurred:', error);
 

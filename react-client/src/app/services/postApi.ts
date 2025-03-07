@@ -41,6 +41,7 @@ export const postApi = api.injectEndpoints({
 export const {
   useCreatePostMutation,
   useGetPostsQuery,
+  useLazyGetPostsQuery,
   useGetPostByIdQuery,
   useUpdatePostMutation,
   useDeletePostMutation,

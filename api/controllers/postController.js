@@ -40,13 +40,14 @@ export default class PostController {
       return res.status(403).json({ error: 'Author not found' });
     }
 
-    const { content } = req.body;
-    if (!content) {
-      return res.status(400).json({ error: 'Content are required' });
+    const { title, content } = req.body;
+    if (!content || !title) {
+      return res.status(400).json({ error: 'Content and title are required' });
     }
 
     try {
       const newPost = await this.postService.createPost({
+        title,
         content,
         authorId: user.userId,
       });
@@ -76,9 +77,9 @@ export default class PostController {
       return res.status(403).json({ error: 'Forbidden' });
     }
 
-    const { content } = req.body;
+    const { content, title } = req.body;
 
-    if (!content) {
+    if (!content || !title) {
       return res.status(400).json({ error: 'Content are required' });
     }
 

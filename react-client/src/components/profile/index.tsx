@@ -13,7 +13,7 @@ export const Profile = () => {
   const { name, email, id, avatarUrl } = currentUser;
 
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 w-96 shadow-lg">
       <figure>
         <img src={`${BASE_URL}${avatarUrl}`} alt="Profile photo" />
       </figure>
