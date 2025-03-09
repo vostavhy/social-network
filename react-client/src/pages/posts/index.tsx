@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
 import { useGetPostsQuery } from '../../app/services/postApi';
 import { Card } from '../../components/card';
 import { CreatePost } from '../../components/create-post';
+import { selectCurrentUser } from '../../features/user/userSlice';
 
 export const Posts = () => {
   const { data, error } = useGetPostsQuery();
+  const currentUser = useSelector(selectCurrentUser);
 
   console.log(data, error);
 
@@ -27,6 +30,7 @@ export const Posts = () => {
               createdAt={createdAt}
               cardType="post"
               id={id}
+              likedByCurrentUser={likes.some((like) => like.userId === currentUser?.id)}
             />
           ))
         ) : (

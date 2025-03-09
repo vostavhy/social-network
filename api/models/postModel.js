@@ -67,11 +67,13 @@ export const deletePost = async (id) => {
     },
   });
 
-  return await prisma.post.delete({
+  const post = await prisma.post.delete({
     where: {
       id,
     },
   });
+
+  return { post, comments, likes };
 };
 
 export const isAuthorExists = async (id) => {

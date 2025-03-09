@@ -24,7 +24,7 @@ type CardProps = {
   likesCount?: number;
   commentsCount?: number;
   createdAt?: Date;
-  id?: string;
+  id: string;
   cardType?: 'post' | 'comment' | 'current-user-post';
   likedByCurrentUser?: boolean;
 };
@@ -52,6 +52,46 @@ export const Card = ({
   const navigate = useNavigate();
   const currentUser = useAppSelector(selectCurrentUser);
 
+  const handleDeletePost = async () => {
+    try {
+      if (cardType === 'comment') {
+        if (commentId) {
+          await deleteComment(commentId).unwrap();
+        } else {
+          setErrorMsg('Comment ID is missing');
+        }
+        triggerPostById(id);
+      } else if (cardType === 'post') {
+        await deletePost(id).unwrap();
+        triggerAllPosts();
+      } else if (cardType === 'current-user-post') {
+        await deletePost(id).unwrap();
+        navigate('/');
+      }
+    } catch (error: any) {
+      if (error.data.error) {
+        setErrorMsg(error.data.error);
+      } else {
+        setErrorMsg('An unknown error occurred');
+      }
+    }
+  };
+
+  const handleLikePost = async () => {
+    try {
+      likedByCurrentUser
+        ? await unlikePost({ postId: id }).unwrap()
+        : await likePost({ postId: id }).unwrap();
+      cardType === 'post' ? await triggerAllPosts() : await triggerPostById(id);
+    } catch (error: any) {
+      if (error.data.error) {
+        setErrorMsg(error.data.error);
+      } else {
+        setErrorMsg('An unknown error occurred');
+      }
+    }
+  };
+
   return (
     <div className="card bg-base-100 border-primary w-full border px-3 py-2 shadow-sm">
       <div className="card-header mb-4 flex items-center justify-between">
@@ -65,7 +105,7 @@ export const Card = ({
         </Link>
 
         {authorID === currentUser?.id && (
-          <div className="cursor-pointer">
+          <div className="cursor-pointer" onClick={handleDeletePost}>
             {deleteCommentStatus.isLoading || deletePossStatus.isLoading ? (
               <span className="loading loading-spinner loading-xs"></span>
             ) : (
@@ -81,7 +121,7 @@ export const Card = ({
       {cardType !== 'comment' && (
         <div className="card-footer gap-3">
           <div className="flex items-center gap-5">
-            <div>
+            <div onClick={handleLikePost}>
               <MetaInfo
                 count={likesCount}
                 Icon={

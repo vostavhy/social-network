@@ -111,8 +111,8 @@ export default class PostController {
     }
 
     try {
-      await this.postService.deletePost(id);
-      return res.status(204).send();
+      const post = await this.postService.deletePost(id);
+      return res.status(204).json(post);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Internal server error' });
