@@ -49,4 +49,5 @@ export interface Comment {
   postId: string;
   user: User;
   post: Post;
+  createdAt: Date;
 }

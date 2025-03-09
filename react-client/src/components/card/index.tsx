@@ -67,6 +67,8 @@ export const Card = ({
       } else if (cardType === 'current-user-post') {
         await deletePost(id).unwrap();
         navigate('/');
+      } else {
+        setErrorMsg('Invalid card type');
       }
     } catch (error: any) {
       if (error.data.error) {

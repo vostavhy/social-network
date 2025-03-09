@@ -4,6 +4,7 @@ import { useGetPostByIdQuery } from '../../app/services/postApi';
 import { Card } from '../../components/card';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../features/user/userSlice';
+import { Comments } from '../../components/comments';
 
 export const CurrentPost = () => {
   const params = useParams<{ id: string }>();
@@ -31,9 +32,11 @@ export const CurrentPost = () => {
         likesCount={likesCount}
         commentsCount={commentsCount}
         id={id}
-        authorID={author.id}
+        authorID={authorId}
         likedByCurrentUser={likes.some((like) => like.userId === currentUser?.id)}
       />
+
+      <Comments comments={comments} />
     </>
   );
 };
