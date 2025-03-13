@@ -19,3 +19,12 @@ services:
       - .env
     ports:
       - 27017:27017
+  react-app:
+    container_name: react-app
+    build:
+      context: ./react-client
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    depends_on:
+      - express-api
