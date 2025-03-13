@@ -93,9 +93,6 @@ export default class UserController {
 
       // check if the current user is following the user
       const isFollowing = user.following.some((follower) => follower.followerId === userId);
-      console.log(isFollowing);
-      console.log(userId);
-      console.log(user.following);
 
       // password must not be send to the client
       delete user.password;
@@ -109,9 +106,6 @@ export default class UserController {
   async updateUser(req, res) {
     const { id } = req.params;
     const { email, name, dateOfBirth, bio, location } = req.body;
-
-    //console.log(req.user.userId);
-    //console.log(id);
 
     if (id !== req.user.userId) {
       return res.status(403).send({ error: 'Forbidden' });

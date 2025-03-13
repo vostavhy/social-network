@@ -23,26 +23,32 @@ export const EditProfile = ({ isOpen, onClose, user }: EditProfileProps) => {
   const [error, setError] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
+  console.log('selectedFile', selectedFile);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!user) return;
+
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    const userData = {
-      name: formData.get('username') as string,
-      email: formData.get('email') as string,
-      bio: formData.get('bio') as string,
-      profileImage: selectedFile,
-    };
+    formData.append('id', user.id);
+    selectedFile && formData.append('profileImage', selectedFile);
 
     try {
-      await updatedUser({ id: user.id, userData }).unwrap();
-      triggerGetUser(id);
+      await updatedUser({ id: user.id, userData: formData }).unwrap();
+      triggerGetUser(id ?? '').unwrap();
       onClose();
     } catch (error: any) {
       setError(error.data.error);
     }
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files) return;
+
+    const file = event.target.files?.[0];
+    setSelectedFile(file);
   };
 
   return (
@@ -56,7 +62,7 @@ export const EditProfile = ({ isOpen, onClose, user }: EditProfileProps) => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Input
             type="text"
-            name="username"
+            name="name"
             placeholder="Username"
             defaultValue={user?.name}
             required
@@ -69,14 +75,7 @@ export const EditProfile = ({ isOpen, onClose, user }: EditProfileProps) => {
             required
           />
           <textarea name="bio" placeholder="Bio" defaultValue={user?.bio} className="textarea" />
-          <input
-            className="input"
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              setSelectedFile(e.target.files?.[0] || null);
-            }}
-          />
+          <input className="input" type="file" accept="image/*" onChange={handleFileChange} />
           <p className="text-sm text-red-500">{error}</p>
           <div className="flex gap-4">
             <button type="submit" className="btn btn-primary" disabled={isLoading}>

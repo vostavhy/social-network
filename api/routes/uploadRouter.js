@@ -13,13 +13,13 @@ const storage = multer.diskStorage({
 });
 
 // Init upload
-const upload = multer({
+export const uploads = multer({
   storage: storage,
   limits: { fileSize: 1000000 },
-}).single('myImage');
+});
 
 router.post('/', (req, res) => {
-  upload(req, res, (err) => {
+  uploads(req, res, (err) => {
     if (err) {
       res.send('error');
     } else {
