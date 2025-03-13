@@ -14,6 +14,9 @@ export interface User {
   comments: Comment[];
   following: Follow[];
   followers: Follow[];
+  isFollowing?: boolean;
+  isCurrentUser?: boolean;
+  isFollowed?: boolean;
 }
 
 export interface Follow {

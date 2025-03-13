@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useCurrentQuery, useLazyCurrentQuery, useLoginMutation } from '../../app/services/userApi';
+import { useLazyCurrentQuery, useLoginMutation } from '../../app/services/userApi';
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
 import { useState } from 'react';

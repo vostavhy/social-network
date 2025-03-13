@@ -3,7 +3,7 @@ import React from 'react';
 type InputProps = {
   name: string;
   placeholder?: string;
-  value?: string;
+  defaultValue?: string;
   type?: string;
   required?: boolean;
   minLength?: number;
@@ -16,7 +16,7 @@ type InputProps = {
 export const Input = ({
   name,
   placeholder,
-  value,
+  defaultValue,
   type,
   className,
   required,
@@ -33,7 +33,7 @@ export const Input = ({
         type={type}
         className={className}
         placeholder={placeholder}
-        value={value}
+        defaultValue={defaultValue}
         required={required === true}
         minLength={minLength}
         pattern={pattern}

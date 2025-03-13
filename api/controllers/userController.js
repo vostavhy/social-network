@@ -92,7 +92,10 @@ export default class UserController {
       }
 
       // check if the current user is following the user
-      const isFollowing = user.followers.some((follower) => follower.id === userId);
+      const isFollowing = user.following.some((follower) => follower.followerId === userId);
+      console.log(isFollowing);
+      console.log(userId);
+      console.log(user.following);
 
       // password must not be send to the client
       delete user.password;
